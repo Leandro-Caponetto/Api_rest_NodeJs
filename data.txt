@@ -1,0 +1,4 @@
+USER_MONGODB=caponettopeppers
+PASSWORD_MONGODB=L9PLZl7LWgjtMZ3e
+
+DATABASE_URI=mongodb+srv://caponettopeppers:L9PLZl7LWgjtMZ3e@cluster0.n5mia8y.mongodb.net/dataNode?retryWrites=true&w=majority
