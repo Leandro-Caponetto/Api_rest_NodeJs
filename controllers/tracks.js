@@ -11,8 +11,9 @@ const { handleHttpError } = require('../utils/handleError')
  */
 const getItems = async (req, res) => {
   try {
+    const user = req.user;
     const data = await tracksModel.find({});
-    res.send({ data });
+    res.send({user, data });
   } catch (error) {
     handleHttpError(res, 'ERROR_GET_ITEMS')
   }
@@ -73,7 +74,16 @@ const updateItem = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const deleteItem = async (req, res) => {};
+const deleteItem = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const {id} = req;
+    const data = await tracksModel.delete({_id:id});
+    res.send({ data });
+  } catch (error) {
+    handleHttpError(res, "ERROR_DELETE_ITEM")
+  }
+};
 
 module.exports = {
   getItems,
